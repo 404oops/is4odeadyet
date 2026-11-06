@@ -1,5 +1,5 @@
 // Simplified Chinese. Translated from en.js; keep keys in sync with it.
-module.exports = {
+var LOCALE = {
   name: "简体中文",
   dir: "zh-hans",
   htmlLang: "zh-Hans",
@@ -293,3 +293,4 @@ module.exports = {
     namesNote: "此处不列出在 Tumbler Ridge 遇害的儿童和教师的姓名。",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

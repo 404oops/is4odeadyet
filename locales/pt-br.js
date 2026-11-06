@@ -1,5 +1,5 @@
 // Brazilian Portuguese. Translated from en.js; keep keys in sync with it.
-module.exports = {
+var LOCALE = {
   name: "Português (Brasil)",
   dir: "pt-br",
   htmlLang: "pt-BR",
@@ -293,3 +293,4 @@ module.exports = {
     namesNote: "As crianças e o professor mortos em Tumbler Ridge não são nomeados aqui.",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

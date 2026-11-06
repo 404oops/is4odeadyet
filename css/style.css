@@ -204,8 +204,6 @@ body.dead .answer:is(:lang(ja), :lang(zh-Hans), :lang(zh-Hant), :lang(ko)) {
   font-family: var(--serif); font-weight: 400; text-transform: none; line-height: 1;
 }
 
-/* Language suggestion, shown above the menu when the browser prefers another available language. */
-.suggest { margin: 0; padding: 10px 16px; text-align: center; border-top: 1px solid var(--line); font-size: .95rem; }
 
 /* Kill count page */
 .kill-head { text-align: center; margin-bottom: 24px; }

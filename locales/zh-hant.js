@@ -1,6 +1,6 @@
 // Traditional Chinese. Translated from en.js; keep keys in sync with it.
-// Strings may contain simple HTML (<em>, <strong>). {placeholders} are filled in by build.js.
-module.exports = {
+// Strings may contain simple HTML (<em>, <strong>). {placeholders} are filled in by js/site.js.
+var LOCALE = {
   name: "繁體中文",
   dir: "zh-hant",
   htmlLang: "zh-Hant",
@@ -294,3 +294,4 @@ module.exports = {
     namesNote: "在 Tumbler Ridge 遇害的孩童與教師不在此列出姓名。",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

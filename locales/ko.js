@@ -1,5 +1,5 @@
 // Korean. Translated from en.js; keep keys in sync with it.
-module.exports = {
+var LOCALE = {
   name: "한국어",
   dir: "ko",
   htmlLang: "ko",
@@ -293,3 +293,4 @@ module.exports = {
     namesNote: "Tumbler Ridge에서 숨진 아이들과 교사의 이름은 여기에 싣지 않는다.",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

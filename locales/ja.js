@@ -1,5 +1,5 @@
 // Japanese. Translated from en.js; keep keys in sync with it.
-module.exports = {
+var LOCALE = {
   name: "日本語",
   dir: "ja",
   htmlLang: "ja",
@@ -293,3 +293,4 @@ module.exports = {
     namesNote: "Tumbler Ridgeで殺害された子どもたちと教師の名前は、ここには記載していない。",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

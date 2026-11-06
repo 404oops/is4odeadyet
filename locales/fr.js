@@ -1,5 +1,5 @@
 // French. Translated from en.js; keep keys in sync with it.
-module.exports = {
+var LOCALE = {
   name: "Français",
   dir: "fr",
   htmlLang: "fr",
@@ -293,3 +293,4 @@ module.exports = {
     namesNote: "Les enfants et le membre du corps enseignant tués à Tumbler Ridge ne sont pas nommés ici.",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

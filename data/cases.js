@@ -40,4 +40,4 @@ const DEATHS = [
   { case: "tumbler-ridge", who: "teacher", place: "tumbler", date: "2026-02-10", how: "shootingSchool" },
 ];
 
-module.exports = { CASES, DEATHS };
+if (typeof module === "object") module.exports = { CASES, DEATHS };

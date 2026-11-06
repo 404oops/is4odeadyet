@@ -43,4 +43,4 @@ const EVENTS = [
   ["transcribe", "2027-02-26", "end", ["deprec"]],
 ];
 
-module.exports = { SHUTDOWN, CHATGPT_REMOVAL, EVENTS };
+if (typeof module === "object") module.exports = { SHUTDOWN, CHATGPT_REMOVAL, EVENTS };

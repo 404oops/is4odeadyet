@@ -1,6 +1,6 @@
 // English. The source locale: every other locale has exactly these keys.
-// Strings may contain simple HTML (<em>, <strong>). {placeholders} are filled in by build.js.
-module.exports = {
+// Strings may contain simple HTML (<em>, <strong>). {placeholders} are filled in by js/site.js.
+var LOCALE = {
   name: "English",
   dir: "",
   htmlLang: "en",
@@ -294,3 +294,4 @@ module.exports = {
     namesNote: "The children and the teacher killed at Tumbler Ridge are not named here.",
   },
 };
+if (typeof module === "object") module.exports = LOCALE;

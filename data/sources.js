@@ -1,4 +1,4 @@
-// Every source cited on the site: key -> [outlet label, URL]. Used by build.js.
+// Every source cited on the site: key -> [outlet label, URL]. Used by js/site.js.
 const SOURCES = {
   deprec: ["OpenAI deprecations", "https://developers.openai.com/api/docs/deprecations"],
   wiki4o: ["Wikipedia: GPT-4o", "https://en.wikipedia.org/wiki/GPT-4o"],
@@ -58,4 +58,4 @@ Object.assign(SOURCES, {
   complaintWan: ["Wan v. OpenAI complaint (PDF)", "https://www.courthousenews.com/wp-content/uploads/2026/10/wan-openai-altman-complaint.pdf"],
 });
 
-module.exports = SOURCES;
+if (typeof module === "object") module.exports = SOURCES;
