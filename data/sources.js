@@ -1,0 +1,44 @@
+// Every source cited on the site, keyed for reuse by events.js and cases.html.
+const SOURCES = {
+  deprec: ["OpenAI deprecations", "https://developers.openai.com/api/docs/deprecations"],
+  wiki4o: ["Wikipedia: GPT-4o", "https://en.wikipedia.org/wiki/GPT-4o"],
+  syco: ["OpenAI: Expanding on sycophancy", "https://openai.com/index/expanding-on-sycophancy/"],
+  tcSyco: ["TechCrunch", "https://techcrunch.com/2025/04/29/openai-explains-why-chatgpt-became-too-sycophantic"],
+  vbPull: ["VentureBeat", "https://venturebeat.com/ai/chatgpt-users-dismayed-as-openai-pulls-popular-models-gpt-4o-o3-and-more-enterprise-api-remains-for-now"],
+  trBack: ["TechRepublic", "https://www.techrepublic.com/article/news-openai-reinstates-gpt4o/"],
+  vbApi: ["VentureBeat", "https://venturebeat.com/ai/openai-is-ending-api-access-to-fan-favorite-gpt-4o-model-in-february-2026"],
+  stats: ["Decrypt", "https://decrypt.co/346513/openai-reveals-1-million-chatgpt-users-discuss-suicide-weekly"],
+
+  raine: ["Wikipedia: Raine v. OpenAI", "https://en.wikipedia.org/wiki/Raine_v._OpenAI"],
+  nbcRaine: ["NBC News", "https://www.nbcnews.com/tech/tech-news/openai-denies-allegation-chatgpt-teenagers-death-adam-raine-lawsuit-rcna245946"],
+  smvlc: ["SMVLC press release", "https://socialmediavictims.org/press-releases/smvlc-tech-justice-law-project-lawsuits-accuse-chatgpt-of-emotional-manipulation-supercharging-ai-delusions-and-acting-as-a-suicide-coach/"],
+  tcSeven: ["TechCrunch", "https://techcrunch.com/2025/11/07/seven-more-families-are-now-suing-openai-over-chatgpts-role-in-suicides-delusions"],
+  fortuneSeven: ["Fortune", "https://www.fortune.com/2025/11/07/chatgpt-open-sam-altman-suicide-lawsuits-17-year-old"],
+  sfsAdams: ["SF Standard", "https://sfstandard.com/2025/12/11/openai-microsoft-sued-suzanee-adams-stein-erik-soelberg/"],
+  ajAdams: ["Al Jazeera", "https://www.aljazeera.com/economy/2025/12/11/openai-sued-for-allegedly-enabling-murder-suicide"],
+  wikiAdams: ["Wikipedia: Murder of Suzanne Adams", "https://en.wikipedia.org/wiki/Murder_of_Suzanne_Adams"],
+  hbSoelberg: ["Hagens Berman", "https://www.hbsslaw.com/press/openai-chatgpt-wrongful-death-claim/lawsuit-filed-against-openai-following-murder-suicide-in-connecticut"],
+  cbsGordon: ["CBS News", "https://www.cbsnews.com/news/chatgpt-lawsuit-colordo-man-suicide-openai-sam-altman/"],
+  futurismGordon: ["Futurism", "https://futurism.com/artificial-intelligence/chatgpt-suicide-openai-gpt4o"],
+  abcMadison: ["ABC 33/40", "https://abc3340.com/news/local/christian-faith-madison-chatgpt-openai-lawsuit-alabama-wrongful-death-i-22-suicide"],
+  wvtmMadison: ["WVTM 13", "https://www.wvtm13.com/article/christian-madison-wrongful-death-lawsuit-openai-chatgpt-jefferson-county-alabama-interstate/73168548"],
+  yahooGates: ["Yahoo News", "https://www.yahoo.com/news/us/articles/man-sues-openai-wife-allegedly-205622054.html"],
+  newserGates: ["Newser", "https://www.newser.com/story/399510/man-sues-openai-says-chatgpt-aided-murder-plot.html"],
+  cnnShamblin: ["CNN", "https://edition.cnn.com/2025/11/06/us/openai-chatgpt-suicide-lawsuit-invs-vis"],
+  sfsEnneking: ["SF Standard", "https://sfstandard.com/2025/11/08/chatgpt-openai-suicide-lawsuits/"],
+  foxComplaint: ["Fox v. OpenAI amended complaint (PDF)", "https://techjusticelaw.org/wp-content/uploads/2025/12/FINAL-J.-Fox-AMENDED-Open-AI-Complaint.pdf"],
+  chtSeven: ["Center for Humane Technology", "https://centerforhumanetechnology.substack.com/p/seven-new-lawsuits-filed-against"],
+  abcRaine: ["ABC7", "https://abc7chicago.com/post/parents-16-year-old-sue-openai-claiming-chatgpt-advised-teens-suicide/17664365/"],
+  engadgetAdams: ["Engadget", "https://www.engadget.com/ai/lawsuit-accuses-chatgpt-of-reinforcing-delusions-that-led-to-a-womans-death-183141193"],
+  gfpAdams: ["Greenwich Free Press", "https://greenwichfreepress.com/news/business/lawsuit-alleges-chatgpt-intensified-old-greenwich-mans-delusions-led-him-to-kill-his-elderly-mother-241618/"],
+  cbsCarrier: ["CBS News", "https://www.cbsnews.com/news/she-confided-in-chatgpt-the-night-of-her-suicide-lawsuit-from-mother-against-openai/"],
+  cbcCarrier: ["CBC", "https://www.cbc.ca/news/canada/new-brunswick/sue-open-ai-suicide-chat-gpt-9.7234630"],
+  ajCarrier: ["Al Jazeera", "https://www.aljazeera.com/economy/2026/6/12/mother-sues-openai-in-us-after-daughters-death-linked-to-chatgpt-use"],
+  yahooMadison: ["Yahoo News", "https://www.yahoo.com/news/us/articles/family-sues-openai-says-chatgpt-024827129.html"],
+  lcWan:["Law Commentary", "https://www.lawcommentary.com/articles/openai-chatgpt-seizure-medication-death-lawsuit"],
+};
+
+// Renders a list of source keys as links.
+function sourceLinks(keys) {
+  return keys.map(k => `<a href="${SOURCES[k][1]}" target="_blank" rel="noopener">${SOURCES[k][0]}</a>`).join(", ");
+}
