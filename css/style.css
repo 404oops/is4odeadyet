@@ -8,7 +8,9 @@
   --mark: #b8892f;
   --left: #e9dfcf;
   --glow: rgba(155, 28, 28, .10);
-  --serif: "Bodoni Moda", Didot, "Bodoni 72", Georgia, "Times New Roman", serif;
+  /* Bodoni Moda for big display type; Libre Bodoni (a Bodoni cut for text) for everything else. */
+  --display: "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+  --serif: "Libre Bodoni", "Bodoni 72", Georgia, "Times New Roman", serif;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -25,7 +27,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 400 18px/1.65 var(--serif); font-optical-sizing: auto; font-variant-numeric: lining-nums; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 18px/1.7 var(--serif); font-variant-numeric: lining-nums; }
 /* Fixed backdrop: a warm glow behind the answer, a soft vignette, and faint paper grain. */
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -40,7 +42,7 @@ h1 { font-size: 2.2rem; font-weight: 400; line-height: 1.2; margin: 0 0 12px; }
 h2 { font-size: 1.5rem; font-weight: 400; margin: 56px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .note, .src { color: var(--muted); }
 .note { font-size: .9rem; }
-.src { font-size: .85rem; }
+.src { font-size: .88rem; }
 
 nav { display: flex; gap: 24px; justify-content: center; padding: 16px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-variant: small-caps; letter-spacing: .08em; font-size: 1.05rem; }
 nav a[aria-current] { font-weight: 600; text-decoration: none; }
@@ -72,7 +74,7 @@ nav a[aria-current] { font-weight: 600; text-decoration: none; }
 .day.ev { box-shadow: inset 0 0 0 2px var(--mark); }
 .day.today { outline: 2px solid var(--fg); }
 .day.end { background: var(--no); color: var(--bg); font-weight: 600; }
-.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .8rem; color: var(--muted); margin-top: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: .85rem; color: var(--muted); margin-top: 12px; }
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -2px; margin-right: 4px; background: var(--left); }
 .legend i.ev { box-shadow: inset 0 0 0 2px var(--mark); }
 .legend i.end { background: var(--no); }
@@ -83,7 +85,7 @@ ol.list > li { padding: 12px 0; border-bottom: 1px solid var(--line); }
 ol.list > li.future { opacity: .6; }
 ol.list p { margin: 4px 0 0; }
 time { font-weight: 600; font-variant-numeric: lining-nums tabular-nums; }
-.tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-left: 6px; color: var(--muted); }
+.tag { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-left: 6px; color: var(--muted); }
 .case h3 { font-size: 1rem; margin: 0; }
 .case .meta { color: var(--muted); font-size: .85rem; }
 .case .chain { margin: 8px 0; padding-left: 20px; }
@@ -176,3 +178,5 @@ body.dead .answer {
     0 2px 2px rgba(47, 107, 58, .18),
     0 10px 28px rgba(47, 107, 58, .22);
 }
+
+h1, h2, .answer, .count b, .tl-year span { font-family: var(--display); font-optical-sizing: auto; }
