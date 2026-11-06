@@ -20,8 +20,16 @@
 <main>
   <h1>GPT-4o, launch to shutdown</h1>
   <p class="note">Faded entries are scheduled but haven't happened yet. Lawsuit entries are allegations; see <a href="cases.html">Cases</a>.</p>
-  <ol class="list" id="timeline"></ol>
+  <div class="tl-legend">
+    <span class="tag-lawsuit"><i></i>Lawsuit</span>
+    <span class="tag-shutdown"><i></i>Pulled from the API</span>
+    <span class="tag-scandal"><i></i>Scandal</span>
+    <span><i></i>Other</span>
+  </div>
+  <ol class="tl" id="timeline"></ol>
 </main>
+
+<footer>Made by <a href="https://404oops.com">404oops</a></footer>
 
 <script src="data/sources.js"></script>
 <script src="data/events.js"></script>
