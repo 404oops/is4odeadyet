@@ -1,33 +1,16 @@
-// Renders EVENTS as a vertical timeline on timeline.html, with year markers and a "today" marker.
+// The timeline is rendered at build time; this fades events that haven't happened yet
+// and inserts the "Today" marker, since both depend on the visitor's date.
 (function () {
   const today = todayIso();
-  const rows = [];
-  let year = null;
-  let nowPlaced = false;
+  const items = [...document.querySelectorAll(".tl-item")];
+  items.forEach(li => li.classList.toggle("future", li.dataset.date > today));
 
-  const dayMonth = iso => new Date(utcMs(iso)).toLocaleDateString(undefined, { day: "numeric", month: "short", timeZone: "UTC" });
-
-  EVENTS.forEach(([date, tag, title, detail, srcs]) => {
-    if (!nowPlaced && date > today) {
-      rows.push(`<li class="tl-now"><span>Today</span><b>${dayMonth(today)}</b></li>`);
-      nowPlaced = true;
-    }
-    const y = date.slice(0, 4);
-    if (y !== year) {
-      rows.push(`<li class="tl-year"><span>${y}</span></li>`);
-      year = y;
-    }
-    rows.push(`
-      <li class="tl-item tag-${tag}${date > today ? " future" : ""}">
-        <time datetime="${date}">${dayMonth(date)}</time>
-        <div class="tl-card">
-          <span class="tag">${tag}</span>
-          <h3>${title}</h3>
-          ${detail ? `<p>${detail}</p>` : ""}
-          <p class="src">${sourceLinks(srcs)}</p>
-        </div>
-      </li>`);
-  });
-
-  document.getElementById("timeline").innerHTML = rows.join("");
+  const next = items.find(li => li.dataset.date > today);
+  if (!next) return;
+  const now = document.createElement("li");
+  now.className = "tl-now";
+  now.innerHTML = `<span>${PAGE.today}</span><b>${fmtDate(today, { day: "numeric", month: "short" })}</b>`;
+  // Put it above the next event, or above that event's year marker if it starts a new year.
+  const prev = next.previousElementSibling;
+  next.parentNode.insertBefore(now, prev && prev.classList.contains("tl-year") ? prev : next);
 })();

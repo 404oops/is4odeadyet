@@ -1,13 +1,14 @@
 // Month-by-month grid of every day from 4o's ChatGPT removal to the final API shutdown.
 // Past days are struck through; each remaining day shows how many days are left.
+// PAGE.events is [[date, tag, title]] in the page's language.
 (function () {
   const DAY = 86400000;
-  const start = utcMs(CHATGPT_REMOVAL);
-  const end = utcMs(SHUTDOWN);
+  const start = utcMs(PAGE.start);
+  const end = utcMs(PAGE.shutdown);
   const today = utcMs(todayIso());
 
   const byDate = {};
-  EVENTS.forEach(e => (byDate[e[0]] ||= []).push(e));
+  PAGE.events.forEach(e => (byDate[e[0]] ||= []).push(e));
 
   const months = [];
   for (let t = start; t <= end; t += DAY) {
@@ -27,7 +28,11 @@
     if (t === end) cls.push("end");
 
     const label = t === end ? "✕" : t < today ? d.getUTCDate() : left;
-    const title = [fmtDate(iso), t >= today && t < end ? `${left} days left` : "", ...evs.map(e => e[2])].filter(Boolean).join(" · ");
+    const title = [
+      fmtDate(iso, { day: "numeric", month: "short", year: "numeric" }),
+      t >= today && t < end ? PAGE.daysLeft.replace("{n}", left) : "",
+      ...evs.map(e => e[2]),
+    ].filter(Boolean).join(" · ").replace(/"/g, "&quot;");
     months[months.length - 1].cells.push(`<div class="${cls.join(" ")}" title="${title}">${label}</div>`);
   }
 
@@ -35,7 +40,7 @@
     // Pad the first week so days line up under Mon..Sun.
     const offset = (m.date.getUTCDay() + 6) % 7;
     const pad = "<div></div>".repeat(offset);
-    const name = m.date.toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" });
+    const name = m.date.toLocaleDateString(PAGE.lang, { month: "long", year: "numeric", timeZone: "UTC" });
     return `<section class="month"><h3>${name}</h3><div class="days">${pad}${m.cells.join("")}</div></section>`;
   }).join("");
 

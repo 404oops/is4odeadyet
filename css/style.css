@@ -55,7 +55,7 @@ nav a[aria-current] { font-weight: 700; text-decoration: none; }
 .hero { font-variation-settings: normal; height: 100vh; height: 100svh; display: grid; grid-template-rows: 1fr auto 1fr; justify-items: center; padding: 24px 16px; }
 .hero .answer { grid-row: 2; }
 .hero .below { grid-row: 3; }
-.answer { font-size: clamp(6rem, 30vw, 16rem); font-weight: 900; font-variation-settings: "opsz" 28; line-height: .9; letter-spacing: -.01em; color: var(--no); margin: 0; }
+.answer { font-size: min(clamp(6rem, 30vw, 16rem), calc(88vw / var(--len, 2))); font-weight: 900; font-variation-settings: "opsz" 28; line-height: .9; letter-spacing: -.01em; color: var(--no); margin: 0; }
 .answer.yes { color: var(--yes); }
 .hero .below { display: flex; flex-direction: column; width: 100%; }
 .hero .under { flex: 1; display: flex; flex-direction: column; justify-content: center; width: min(560px, 100%); margin: 0 auto; }
@@ -105,6 +105,9 @@ time { font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
 .dangers p { margin: 4px 0 0; }
 
 footer { text-align: center; padding: 24px 16px 40px; border-top: 1px solid var(--line); color: var(--muted); }
+footer p { margin: 0; }
+footer .langs { margin-top: 10px; font-size: .9rem; }
+footer .langs [aria-current] { color: var(--fg); }
 
 /* Cases: each one collapses to a name and a one-line hook; click to expand. */
 .case details > summary { list-style: none; cursor: pointer; position: relative; padding-right: 32px; }
@@ -188,3 +191,40 @@ body.dead .answer {
 strong, b, h1, h2, h3, .who, time, nav a[aria-current] { color: var(--fg); }
 /* Bold is set extra heavy so it stands well apart from regular text. */
 strong, .who, .dangers h3, .tl-card h3 { font-weight: 800; }
+
+/* CJK languages: Bodoni Moda has no CJK glyphs, so a matching Noto Serif takes over for those characters. */
+:lang(ja) { --serif: "Bodoni Moda", "Noto Serif JP", serif; }
+:lang(zh-Hans) { --serif: "Bodoni Moda", "Noto Serif SC", serif; }
+:lang(zh-Hant) { --serif: "Bodoni Moda", "Noto Serif TC", serif; }
+:lang(ko) { --serif: "Bodoni Moda", "Noto Serif KR", serif; }
+:lang(ja) body, :lang(zh-Hans) body, :lang(zh-Hant) body, :lang(ko) body { line-height: 1.85; }
+:lang(ja) .hook, :lang(zh-Hans) .hook, :lang(zh-Hant) .hook, :lang(ko) .hook { font-style: normal; }
+/* The script YES only has Latin letters. */
+body.dead .answer:is(:lang(ja), :lang(zh-Hans), :lang(zh-Hant), :lang(ko)) {
+  font-family: var(--serif); font-weight: 400; text-transform: none; line-height: 1;
+}
+
+/* Language suggestion, shown above the menu when the browser prefers another available language. */
+.suggest { margin: 0; padding: 10px 16px; text-align: center; border-top: 1px solid var(--line); font-size: .95rem; }
+
+/* Kill count page */
+.kill-head { text-align: center; margin-bottom: 24px; }
+.kill-number { font-size: clamp(6rem, 26vw, 12rem); font-weight: 900; font-variation-settings: "opsz" 28; line-height: .9; color: var(--no); margin: 8px 0 0; font-variant-numeric: lining-nums; }
+.kill-head h1 { margin: 8px 0 0; }
+.kill-caption { margin: 4px 0 0; color: var(--muted); }
+.kill-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .95rem; }
+.kill-table th, .kill-table td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.kill-table thead th { color: var(--muted); font-weight: 400; font-size: .85rem; }
+.kill-table tbody th { font-weight: 800; color: var(--fg); }
+.kill-table tbody th a { text-decoration: none; }
+.kill-table tbody th a:hover { text-decoration: underline; }
+.kill-table .age, .kill-table .died { white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+@media (max-width: 600px) {
+  /* Each row becomes a small card: name, then the details on one line. */
+  .kill-table thead { display: none; }
+  .kill-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .kill-table th, .kill-table td { display: inline; border: 0; padding: 0; }
+  .kill-table tbody th { display: block; }
+  .kill-table td { color: var(--muted); }
+  .kill-table td + td::before { content: " · "; }
+}

@@ -1,18 +1,17 @@
-// Drives the YES/NO answer and the weeks/days/hours/minutes/seconds countdown on index.html.
+// Drives the YES/NO answer and the weeks/days/hours/minutes/seconds countdown on the homepage.
 (function () {
-  const deadline = utcMs(SHUTDOWN);
+  const deadline = utcMs(PAGE.shutdown);
   const $ = id => document.getElementById(id);
 
   function tick() {
     const left = Math.max(0, deadline - Date.now());
     const dead = left === 0;
-    $("answer").textContent = dead ? "YES." : "NO";
+    $("answer").textContent = dead ? PAGE.answer.yes : PAGE.answer.no;
+    $("answer").style.setProperty("--len", dead ? PAGE.answerLen.yes : PAGE.answerLen.no);
     $("answer").classList.toggle("yes", dead);
     // Once it's dead the hero shows only YES on a plain white page (see body.dead in style.css).
     document.body.classList.toggle("dead", dead);
-    $("status").textContent = dead
-      ? "The final GPT-4o snapshots are gone from ChatGPT and the API."
-      : "Gone from ChatGPT since 13 Feb 2026. The final snapshots are still in the API.";
+    $("status").textContent = dead ? PAGE.status.dead : PAGE.status.alive;
 
     const s = Math.floor(left / 1000);
     $("w").textContent = Math.floor(s / 604800);

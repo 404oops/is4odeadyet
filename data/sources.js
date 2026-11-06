@@ -1,4 +1,4 @@
-// Every source cited on the site, keyed for reuse by events.js and cases.html.
+// Every source cited on the site: key -> [outlet label, URL]. Used by build.js.
 const SOURCES = {
   deprec: ["OpenAI deprecations", "https://developers.openai.com/api/docs/deprecations"],
   wiki4o: ["Wikipedia: GPT-4o", "https://en.wikipedia.org/wiki/GPT-4o"],
@@ -38,7 +38,24 @@ const SOURCES = {
   lcWan:["Law Commentary", "https://www.lawcommentary.com/articles/openai-chatgpt-seizure-medication-death-lawsuit"],
 };
 
-// Renders a list of source keys as links.
-function sourceLinks(keys) {
-  return keys.map(k => `<a href="${SOURCES[k][1]}" target="_blank" rel="noopener">${SOURCES[k][0]}</a>`).join(", ");
-}
+// Added Nov 2026: Tumbler Ridge, Wan details and other 4o scandals.
+Object.assign(SOURCES, {
+  wikiTumbler: ["Wikipedia: 2026 Tumbler Ridge shooting", "https://en.wikipedia.org/wiki/2026_Tumbler_Ridge_shooting"],
+  nprTumbler: ["NPR", "https://www.npr.org/2026/04/29/nx-s1-5798896/tumbler-ridge-mass-shooting-chat-gpt-lawsuit"],
+  opbTumbler: ["OPB", "https://www.opb.org/article/2026/04/29/families-sue-openai-over-tumbler-ridge-mass-shooters-use-of-chatgpt/"],
+  cbcTumbler: ["CBC", "https://www.cbc.ca/news/canada/british-columbia/tumbler-ridge-b-c-mass-shooting-families-suing-openai-9.7181214"],
+  globalTumbler: ["Global News", "https://globalnews.ca/news/11676795/tumbler-ridge-school-shooter-chatgpt-account-flagged-banned-openai/"],
+  cbcAccount: ["CBC", "https://www.cbc.ca/news/politics/chatgpt-tumbler-ridge-shooter-account-police-9.7107569"],
+  mjTumbler: ["Mother Jones", "https://www.motherjones.com/media/2026/04/chatgpt-tumbler-ridge-fsu-openai-chatbots-mass-shootings/"],
+  nbcTumbler: ["NBC News", "https://www.nbcnews.com/news/us-news/us-resident-charged-helping-canadian-school-shooter-rampage-killed-8-t-rcna601965"],
+  wsj4o: ["WSJ (reprint, To Vima)", "https://www.tovima.com/wsj/inside-openais-decision-to-kill-the-ai-model-that-people-loved-too-much/"],
+  decoder4o: ["The Decoder", "https://the-decoder.com/openai-kills-the-ai-model-users-loved-too-much-leaves-behind-lawsuits-and-delusion/"],
+  wcRushed: ["Windows Central", "https://windowscentral.com/software-apps/openai-reportedly-sent-rsvps-for-gpt-4os-launch-party-even-before-testing-began"],
+  axiosSky: ["Axios", "https://www.axios.com/2024/05/20/scarlet-johansson-openai-chatgpt-sam-altman"],
+  designboomGhibli: ["designboom", "https://www.designboom.com/technology/why-internet-freaking-out-chatgpt-studio-ghibli-style-ai-images-copyright-artificial-intelligence-03-28-2025/"],
+  tcWan: ["TechCrunch", "https://techcrunch.com/2026/10/27/parents-sue-openai-alleging-gpt-4o-coached-their-daughter-off-seizure-medication/"],
+  kiroWan: ["KIRO 7", "https://www.kiro7.com/news/local/seattle-womans-family-sues-openai-claims-chatgpt-coached-her-off-medication-before-death/YV3O46Q65NC5LBMKEKFVLZRY5Y/"],
+  complaintWan: ["Wan v. OpenAI complaint (PDF)", "https://www.courthousenews.com/wp-content/uploads/2026/10/wan-openai-altman-complaint.pdf"],
+});
+
+module.exports = SOURCES;
