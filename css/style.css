@@ -151,3 +151,28 @@ footer { text-align: center; padding: 24px 16px 40px; border-top: 1px solid var(
   .tl-now b { padding-left: 0; }
   .tl-now span, .tl-now b { justify-self: start; }
 }
+
+/* After the shutdown: plain white page, only YES in the hero. Uses the light palette even in dark mode. */
+body.dead {
+  --bg: #fff;
+  --fg: #1f1915;
+  --muted: #6f6257;
+  --line: #e4ddd2;
+  --left: #f1ece4;
+  --yes: #2f6b3a;
+  --no: #9b1c1c;
+  background: #fff;
+}
+body.dead::before { background: radial-gradient(ellipse 45% 35% at 50% 50vh, rgba(47, 107, 58, .07), transparent 70%); }
+body.dead .hero .below { display: none; }
+/* Script capitals don't work in all caps, so YES is shown as "Yes". */
+body.dead .answer { font-family: "Pinyon Script", "Snell Roundhand", cursive; font-weight: 400; font-variation-settings: normal; letter-spacing: 0; line-height: 1.2; text-transform: lowercase; }
+body.dead .answer::first-letter { text-transform: uppercase; }
+
+/* A soft green shadow lifts the YES off the white page. */
+body.dead .answer {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, .9),
+    0 2px 2px rgba(47, 107, 58, .18),
+    0 10px 28px rgba(47, 107, 58, .22);
+}

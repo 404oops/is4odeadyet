@@ -6,8 +6,10 @@
   function tick() {
     const left = Math.max(0, deadline - Date.now());
     const dead = left === 0;
-    $("answer").textContent = dead ? "YES" : "NO";
+    $("answer").textContent = dead ? "YES." : "NO";
     $("answer").classList.toggle("yes", dead);
+    // Once it's dead the hero shows only YES on a plain white page (see body.dead in style.css).
+    document.body.classList.toggle("dead", dead);
     $("status").textContent = dead
       ? "The final GPT-4o snapshots are gone from ChatGPT and the API."
       : "Gone from ChatGPT since 13 Feb 2026. The final snapshots are still in the API.";
